@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping System</title>
+</head>
+<body>
+<div class="container">
+<h1>Shopping Cart</h1> 
+<table class="table">
+
+    <tr class="table">
+
+    </tr>
+    <% data.forEach(function(element) { %>
+    <tr>
+        <td><%= element.id %></td>
+        <td><%= element.name %></td>
+        <td><%= element.availability %></td>
+        <td>
+            <form action="/available" method="POST">
+                <input type="text"style="display: none" value="<%= element.id %>" name="id">
+                <button type = "submit">Available</button>
+            </form>
+        </td>
+        <td>
+            <form action="/unavailable" method="POST">
+                <input type="text"style="display: none" value="<%= element.id %>" name="id">
+                <button type = "submit">Unavailable</button>
+            </form>
+        </td>
+        <td>
+            <form action="/delete" method="POST">
+                <input type="text" style="display: none;"
+                    name="id"
+                    value="<%= element.name %>">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <% }) %>
+
+</table>
+
+<table>
+    <tr>
+        <form action="/add" method ="POST">
+        <tr>Name</tr>
+        <input type="string" name="name"/>
+        <tr>Availability</tr>
+        <input type="string" name="availability"/>
+        <button type="submit">submit</button> 
+           
+        </form>
+    </tr>
+</table>
+
+
+</div>
+</body>
+
+</html>
